@@ -1,7 +1,8 @@
--- Starting small --
+# Starting small
 
-Lately I have been doing micro benchmarking of my code and others to get a feel for how it performs and behaves. This post will introduce a few benchmarking primitives that I will build upon in later benchmark studies.
-
+Lately I have been micro benchmarking my Python code to get a feel for how it
+performs and behaves. This post will introduce a few benchmarking primitives
+that I will build upon in later benchmark studies.
 
 # Decorators
 
@@ -25,7 +26,6 @@ def f(x):
 
 The wrapper function is responsible for calling f(). Seeing how we want to
 benchmark some function f(), that might just turn out to be very useful!
-
 
 # Timing a function
 
@@ -87,37 +87,38 @@ def a():
 
 The measurements:
 <pre>
-	a() => 0.092 ms
-	a() => 0.040 ms
-	a() => 0.040 ms
-	a() => 0.038 ms
-	a() => 0.039 ms
-	a() => 0.039 ms
-	a() => 0.155 ms
-	a() => 0.073 ms
-	a() => 0.039 ms
-	a() => 0.039 ms
-	a() => 0.039 ms
-	[..]
-	average> a => 0.045 ms
+a() => 0.092 ms
+a() => 0.040 ms
+a() => 0.040 ms
+a() => 0.038 ms
+a() => 0.039 ms
+a() => 0.039 ms
+a() => 0.155 ms
+a() => 0.073 ms
+a() => 0.039 ms
+a() => 0.039 ms
+a() => 0.039 ms
+[..]
+average> a => 0.045 ms
 </pre>
 
 The first thing to notice is that first execution takes twice as long as do most
 of the following. Running the same test repeatedly shows that this behaviour is
 consistent; this is likely a pattern that we will see for most of what we
-measure. [cite zed shaw.]
+measure. "The process is not stable."
 
 Also, while the average falls somewhere near 0.040 ms and most measures lie just
 below that average, a few outliers fall far off at between 0.100 and 0.200 ms.
 What causes these outliers? I don't know, but they occur frequently enough in
 repeated tests that I draw the conclusion that they are not freak incidents.
 
-The 'correct' number of times to run measurements differs between functions. I
-confirmed my assumption that the deviation between runs would became smaller as
-the number of measurements per run increased. At 100 000 runs, the average
-execution time settled at around 0.100 ms - which is very close to the naive
-one-run measurement we had from the beginning!
-
+The 'correct' number of times to run measurements differs between functions. Zed
+Shaw has written [more about
+this](http://www.zedshaw.com/essays/programmer_stats.html). I did confirm my
+assumption that the deviation between runs would become smaller as the number of
+measurements per run increased. At 100 000 runs, the average execution time
+settled at around 0.100 ms - which is very close to the naive one-run
+measurement we had from the beginning!
 
 # Summary
 
