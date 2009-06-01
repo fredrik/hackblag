@@ -12,7 +12,7 @@ def timing(func):
 
 # run the function 100 times, take the average.
 def timingx100(func):
-	n = 100
+	n = 1000000
 	def avg_wrapper(*arg):
 		tot = 0
 		emax = 0

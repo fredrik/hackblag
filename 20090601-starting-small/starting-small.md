@@ -1,11 +1,13 @@
 -- Starting small --
 
-Lately I have been doing a bit of micro benchmarking to get a feel for how my Python code performs and behaves. This post will introduce a few benchmarking primitives that I will build upon in later benchmarking studies.
+Lately I have been doing micro benchmarking of my code and others to get a feel for how it performs and behaves. This post will introduce a few benchmarking primitives that I will build upon in later benchmark studies.
 
 
 # Decorators
 
-Python has a little something called decorators. The decorator takes a functions as its arguments. You attach a decorator to a function like so:
+Python has got something called decorators. A decorator takes a functions as its arguments and constructs a function, called wrapper below, that is executed in place of the original function.
+
+You attach a decorator to a function like so:
 
 <pre>
 def some_decorator(func):
@@ -89,14 +91,16 @@ The measurements:
 	a() => 0.039 ms
 	a() => 0.039 ms
 	[..]
-	average> a0 => 0.045 ms
+	average> a => 0.045 ms
 </pre>
 
-The first thing to notice is that first execution takes twice as long as do most of the following calls. Running the same test repeatedly shows that this behaviour is consistent; this is likely a pattern that we will see for most of what we measure. [cite zed shaw.]
+The first thing to notice is that first execution takes twice as long as do most of the following. Running the same test repeatedly shows that this behaviour is consistent; this is likely a pattern that we will see for most of what we measure. [cite zed shaw.]
 
-Also, while the average falls somewhere near 0.040 ms and most measures lie just below that average, a few outliers fall far off, at between 0.100 and 0.200 ms. What causes these outliers? I don't know, but they occur frequently enough in subsequent tests that I draw the conclusion that they are not freak incidents.
+Also, while the average falls somewhere near 0.040 ms and most measures lie just below that average, a few outliers fall far off at between 0.100 and 0.200 ms. What causes these outliers? I don't know, but they occur frequently enough in repeated tests that I draw the conclusion that they are not freak incidents.
+
+The 'correct' number of times to run measurements differs between functions. I confirmed my assumption that the deviation between runs would became smaller as the number of measurements per run increased. At 100 000 runs, the average execution time settled at around 0.100 ms - which is very close to the naive one-run measurement we had from the beginning!
 
 
 # Summary
 
-This post has introduced a simple decorator-based timing mechanism. We have also seen that running benchmarks more than once is a good thing.
+This post has introduced a simple decorator-based timing mechanism. We have also seen that running benchmarks a number of times is a good thing.
