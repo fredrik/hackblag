@@ -88,12 +88,10 @@ and *mapred.job.tracker* like so:
    &lt;name&gt;fs.default.name&lt;/name&gt;
    &lt;value&gt;hdfs://localhost:9000&lt;/value&gt;
  &lt;/property&gt;
-
  &lt;property&gt;
    &lt;name&gt;mapred.job.tracker&lt;/name&gt;
    &lt;value&gt;localhost:9001&lt;/value&gt;
  &lt;/property&gt;
-
  &lt;property&gt;
    &lt;name&gt;dfs.replication&lt;/name&gt;
    &lt;value&gt;1&lt;/value&gt;
@@ -212,7 +210,6 @@ This should have started a master and a regionserver.
 Check the logs for lines like these:
 <pre>
 INFO org.apache.hadoop.hbase.master.HMaster: HMaster initialized on 127.0.0.1:60000
-[..]
 INFO org.apache.hadoop.hbase.regionserver.HRegionServer: HRegionServer started at: 127.0.0.1:52765
 </pre>
 
