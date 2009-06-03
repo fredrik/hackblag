@@ -84,20 +84,20 @@ In **conf/hadoop-site.xml**, set the properties *fs.default.name*, *dfs.replicat
 and *mapred.job.tracker* like so:
 <pre>
 &lt;configuration&gt;
-  &lt;property&gt;
-    &lt;name&gt;fs.default.name&lt;/name&gt;
-    &lt;value&gt;hdfs://localhost:9000&lt;/value&gt;
-  &lt;/property&gt;
+ &lt;property&gt;
+   &lt;name&gt;fs.default.name&lt;/name&gt;
+   &lt;value&gt;hdfs://localhost:9000&lt;/value&gt;
+ &lt;/property&gt;
 
-  &lt;property&gt;
-    &lt;name&gt;mapred.job.tracker&lt;/name&gt;
-    &lt;value&gt;localhost:9001&lt;/value&gt;
-  &lt;/property&gt;
+ &lt;property&gt;
+   &lt;name&gt;mapred.job.tracker&lt;/name&gt;
+   &lt;value&gt;localhost:9001&lt;/value&gt;
+ &lt;/property&gt;
 
-  &lt;property&gt;
-    &lt;name&gt;dfs.replication&lt;/name&gt;
-    &lt;value&gt;1&lt;/value&gt;
-  &lt;/property&gt;
+ &lt;property&gt;
+   &lt;name&gt;dfs.replication&lt;/name&gt;
+   &lt;value&gt;1&lt;/value&gt;
+ &lt;/property&gt;
 &lt;/configuration&gt;
 </pre>
 
@@ -176,10 +176,10 @@ export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Hom
 In **conf/hbase-site, set *hbase.rootdir* to point to /hbase on HDFS:
 <pre>
 &lt;configuration&gt;
-  &lt;property&gt;
-    &lt;name&gt;hbase.rootdir&lt;/name&gt;
-    &lt;value&gt;hdfs://localhost:9000/hbase&lt;/value&gt;
-  &lt;/property&gt;
+ &lt;property&gt;
+   &lt;name&gt;hbase.rootdir&lt;/name&gt;
+   &lt;value&gt;hdfs://localhost:9000/hbase&lt;/value&gt;
+ &lt;/property&gt;
 &lt;/configuration&gt;
 </pre>
 
