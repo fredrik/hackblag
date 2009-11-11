@@ -1,0 +1,20 @@
+backing up git repositories.
+
+as I learned the hard way today, keeping an offsite backup of your .git directory is a Good Thing.
+
+
+# create directory on backup host.
+ssh mosfet
+cd /data/fredrik
+mkdir backup-git
+chmod 0700 backup-git
+
+# for each repos
+mkdir backup-git/hackintosh-desktop
+cd $_
+git init --bare
+
+
+# workstation.
+[~/Desktop]:$> git remote add backup mosfet:/data/fredrik/backup-git/hackintosh-desktop
+[~/Desktop]:$> git push backup master
