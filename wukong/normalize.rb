@@ -1,14 +1,16 @@
+#!/usr/bin/env ruby
+# run like so:
+# $> ruby normalize.rb --run=local data/sizes.tsv data/normalized_sizes.tsv
 require 'rubygems'
 require 'wukong'
+require 'active_support/core_ext/enumerable' # for array#sum
 
 module Normalize
-  class Mapper < Wukong::Streamer::LineStreamer
-    def process(line)
-      fields = line.strip.split("\t")
-      country = fields.reverse!.pop
-      data = fields.map(&:to_i)
-      sum = data.sum.to_f
-      normalized = data.map {|x| 100 * x/sum }
+  class Mapper < Wukong::Streamer::RecordStreamer
+    def process(country, *sizes)
+      sizes.map!(&:to_i)
+      sum = sizes.sum.to_f
+      normalized = sizes.map{|x| 100 * x/sum }
       s = normalized.join(",")
       yield [country, s]
     end

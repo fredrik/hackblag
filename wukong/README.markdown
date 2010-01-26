@@ -3,6 +3,8 @@ Wukong who?
 
 Here be some notes from my talk on [Wukong](http://github.com/mrflip/wukong) at the January meetup of [Got.rb](http://www.meetup.com/got-rb/).
 
+**Update**: Please see [mrflip's amendments](http://github.com/mrflip/wukong/tree/master/examples/contrib/jeans/).
+
 Wukong is a framework for writing Hadoop jobs in Ruby. Other such frameworks are [MRToolkit](http://code.google.com/p/mrtoolkit/) (which is also written in Ruby and which I have not tried it) and [Dumbo](http://github.com/klbostee/dumbo) (which is written in Python and which I love dearly). You could also write your jobs in Java(!) or as bare scripts hooked into [Hadoop Streaming](http://hadoop.apache.org/common/docs/current/streaming.html), but that would be nuts.
 
 Wukong gives you the option of treating your data as a stream of lines or as a stream of fields or lightweight objects. My forenoon's experience of Wukong covers only the basic text streaming so we'll skip the structured data and interpret the data as dumb chunks of text.
